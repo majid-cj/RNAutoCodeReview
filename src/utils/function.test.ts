@@ -12,7 +12,7 @@ describe('Test FilterVerifiedMembers', () => {
   ]
 
   it('test number of verified members must be 2', () => {
-    const verifiedMember = FilterVerifiedMembers(data)
-    expect(verifiedMember.length).toEqual(2)
+    const results = FilterVerifiedMembers(data)
+    expect(results.length).toEqual(2)
   })
 })
