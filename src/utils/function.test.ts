@@ -19,17 +19,17 @@ describe('Test filterVerifiedMembers', () => {
     { ID: '3', VerifyStatus: false, NickName: 'user3', Email: 'user3@mail.com' },
   ]
 
-  it('test number of verified members must be 2', () => {
+  it('should return 2 verified members when given an array with both verified and unverified members', () => {
     const results = filterVerifiedMembers(data)
     expect(results.length).toEqual(2)
   })
 
-  it('test number of verified members must be 0 for empty array', () => {
+  it('should return an empty array when given an empty input array', () => {
     const results = filterVerifiedMembers(emptyData)
     expect(results.length).toEqual(0)
   })
 
-  it('test number of verified members must be 0 for none verified users', () => {
+  it('should return an empty array when given an array with only unverified members', () => {
     const results = filterVerifiedMembers(notVerifiedData)
     expect(results.length).toEqual(0)
   })
