@@ -1,8 +1,8 @@
-import { FilterVerifiedMembers } from './function'
+import { getIsVerifiedMembers } from './function'
 
-import { TMember } from '~/models/memeber'
+import { TMember } from '~/models/member'
 
-describe('Test FilterVerifiedMembers', () => {
+describe('Test getIsVerifiedMembers', () => {
   const data: Array<TMember> = [
     { ID: '1', IsVerified: false, NickName: 'user1', Email: 'user1@mail.com' },
     { ID: '2', IsVerified: true, NickName: 'user2', Email: 'user2@mail.com' },
@@ -11,8 +11,26 @@ describe('Test FilterVerifiedMembers', () => {
     { ID: '5', IsVerified: false, NickName: 'user5', Email: 'user5@mail.com' },
   ]
 
+  const emptyData: Array<TMember> = []
+
+  const notVerifiedData: Array<TMember> = [
+    { ID: '1', IsVerified: false, NickName: 'user1', Email: 'user1@mail.com' },
+    { ID: '2', IsVerified: false, NickName: 'user2', Email: 'user2@mail.com' },
+    { ID: '3', IsVerified: false, NickName: 'user3', Email: 'user3@mail.com' },
+  ]
+
   it('test number of verified members must be 2', () => {
-    const results = FilterVerifiedMembers(data)
+    const results = getIsVerifiedMembers(data)
     expect(results.length).toEqual(2)
+  })
+
+  it('test number of verified members must be 0 for empty array', () => {
+    const results = getIsVerifiedMembers(emptyData)
+    expect(results.length).toEqual(0)
+  })
+
+  it('test number of verified members must be 0 for none verified users', () => {
+    const results = getIsVerifiedMembers(notVerifiedData)
+    expect(results.length).toEqual(0)
   })
 })

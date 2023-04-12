@@ -1,7 +1,5 @@
-import { TMember } from '~/models/memeber'
+import { TMember } from '~/models/member'
 
-export const FilterVerifiedMembers = (members: Array<TMember>): Array<TMember> => {
-  return members.filter(({ IsVerified }) => {
-    return IsVerified
-  })
+export const getIsVerifiedMembers = (members: Array<TMember>): Array<TMember> => {
+  return members.filter(({ IsVerified }) => IsVerified)
 }
