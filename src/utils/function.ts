@@ -1,5 +1,9 @@
 import { TMember } from '~/models/member'
 
-export const getIsVerifiedMembers = (members: Array<TMember>): Array<TMember> => {
-  return members.filter(({ IsVerified }) => IsVerified)
-}
+/**
+ *
+ * @param Array<TMember>
+ * @returns Array<TMember>
+ */
+export const filterVerifiedMembers = (members: Array<TMember>): Array<TMember> =>
+  members.filter(({ VerifyStatus }) => VerifyStatus)
